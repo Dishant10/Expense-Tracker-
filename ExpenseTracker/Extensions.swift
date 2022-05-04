@@ -20,7 +20,7 @@ extension DateFormatter{
      
     static let allNumbericIndia:DateFormatter = {
         let formatter =  DateFormatter()
-        formatter.dateFormat = "DD/MM/YYYY "
+        formatter.dateFormat = "MM/dd/yyyy"
         
         return formatter
     }()
@@ -35,5 +35,21 @@ extension String{
             return Date()
         }
         return parsedDate
+    }
+}
+
+
+extension Date:Strideable{
+    func formatted() -> String {
+        
+        return self.formatted(.dateTime.year().month().day())
+        
+    }
+}
+
+extension Double{
+     
+    func roundedto2Digits() -> Double {
+        return (self*100).rounded() / 100
     }
 }
